@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function MultistepWizardPage() {
@@ -55,14 +56,26 @@ function Step({ step, currentStep }) {
       : "complete";
 
   return (
-    <div
-      className={`${
-        status === "active"
-          ? "border-blue-500 bg-white text-blue-500"
-          : status === "complete"
-          ? "border-blue-500 bg-blue-500"
-          : "border-slate-200 bg-white text-slate-400"
-      } flex h-10 w-10 items-center justify-center rounded-full border-2 font-semibold`}
+    <motion.div
+      animate={status}
+      variants={{
+        inactive: {
+          backgroundColor: "var(--white)",
+          borderColor: "var(--slate-200)",
+          color: "var(--slate-400)",
+        },
+        active: {
+          backgroundColor: "var(--white)",
+          borderColor: "var(--blue-500)",
+          color: "var(--blue-500)",
+        },
+        complete: {
+          backgroundColor: "var(--blue-500)",
+          borderColor: "var(--blue-500)",
+          color: "var(--blue-500)",
+        },
+      }}
+      className="flex h-10 w-10 items-center justify-center rounded-full border-2 font-semibold"
     >
       <div className="flex items-center justify-center">
         {status === "complete" ? (
@@ -71,7 +84,7 @@ function Step({ step, currentStep }) {
           <span>{step}</span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -84,7 +97,19 @@ function CheckIcon(props) {
       stroke="currentColor"
       strokeWidth={3}
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      <motion.path
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{
+          delay: 0.2,
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.3,
+        }}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 13l4 4L19 7"
+      />
     </svg>
   );
 }
