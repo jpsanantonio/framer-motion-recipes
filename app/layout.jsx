@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${robotMono.className} bg-slate-950 relative`}>
+      <body className={`${robotMono.className} bg-slate-950 relative `}>
         <div className="w-10/12 flex mx-auto border-x-slate-900 border-x px-1">
           <div className="relative w-1/3 px-4 flex flex-col pt-36 border-x-slate-900 border-x">
             <h1 className="text-slate-50 text-xl font-medium">
