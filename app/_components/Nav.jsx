@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const recipes = [
   {
     label: "Multistep Wizard",
-    pathname: "/",
+    pathname: "/multistep-wizard",
   },
   {
     label: "Email Client",
