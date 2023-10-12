@@ -51,7 +51,7 @@ export default function ResizablePanelPage() {
           )}
         </div>
 
-        <p className="mt-8 text-sm text-zinc-500">
+        <p className="mt-8 text-sm text-zinc-300">
           <span className="underline">Reach out</span> to us if you need more
           help.
         </p>

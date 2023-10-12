@@ -1,6 +1,6 @@
 export default function FixedHeaderPartOnePage() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 overflow-hidden text-slate-600">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 overflow-hidden text-slate-200 bg-gradient-to-br from-slate-700 to-slate-900">
       <div className="z-0 flex-1 overflow-y-scroll">
         <header className="flex h-20">
           <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-8">
@@ -12,7 +12,7 @@ export default function FixedHeaderPartOnePage() {
                 Daily Bugle
               </span>
             </p>
-            <nav className="flex space-x-4 text-xs font-medium text-slate-400">
+            <nav className="flex space-x-4 text-xs font-medium text-slate-50">
               <a href="#">News</a>
               <a href="#">Sports</a>
               <a href="#">Culture</a>

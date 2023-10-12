@@ -18,7 +18,7 @@ export default function FixedHeaderPartTwoPage() {
   }, [height, scrollY]);
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 overflow-hidden text-slate-600">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 overflow-hidden text-slate-600 bg-gradient-to-br from-slate-700 to-slate-900">
       <div className="z-0 flex-1 overflow-y-scroll">
         <motion.header
           style={{ height }}
