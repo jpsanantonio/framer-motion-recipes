@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import * as Icons from "@heroicons/react/outline";
 
@@ -60,39 +61,51 @@ export default function EmailClientPage() {
             </div>
           </div>
           <ul className="overflow-y-scroll px-3 pt-2">
-            {[...messages].reverse().map((mid) => (
-              <li key={mid} className="relative">
-                <div className="py-0.5">
-                  <button
-                    onClick={() => toggleMessage(mid)}
-                    className={`${
-                      selectedMessages.includes(mid)
-                        ? "bg-blue-500"
-                        : "hover:bg-slate-200"
-                    } block w-full cursor-pointer truncate rounded py-3 px-3 text-left`}
-                  >
-                    <p
+            <AnimatePresence initial={false}>
+              {[...messages].reverse().map((mid) => (
+                <motion.li
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{
+                    opacity: { duration: 0.2 },
+                    height: { type: "spring", bounce: 0.5, duration: 1 },
+                  }}
+                  key={mid}
+                  className="relative"
+                >
+                  <div className="py-0.5">
+                    <button
+                      onClick={() => toggleMessage(mid)}
                       className={`${
                         selectedMessages.includes(mid)
-                          ? "text-white"
-                          : "text-slate-500"
-                      } truncate text-sm font-medium`}
+                          ? "bg-blue-500"
+                          : "hover:bg-slate-200"
+                      } block w-full cursor-pointer truncate rounded py-3 px-3 text-left`}
                     >
-                      {titles[mid % titles.length][0]}
-                    </p>
-                    <p
-                      className={`${
-                        selectedMessages.includes(mid)
-                          ? "text-blue-200"
-                          : "text-slate-400"
-                      } truncate text-xs`}
-                    >
-                      {titles[mid % titles.length][1]}
-                    </p>
-                  </button>
-                </div>
-              </li>
-            ))}
+                      <p
+                        className={`${
+                          selectedMessages.includes(mid)
+                            ? "text-white"
+                            : "text-slate-500"
+                        } truncate text-sm font-medium`}
+                      >
+                        {titles[mid % titles.length][0]}
+                      </p>
+                      <p
+                        className={`${
+                          selectedMessages.includes(mid)
+                            ? "text-blue-200"
+                            : "text-slate-400"
+                        } truncate text-xs`}
+                      >
+                        {titles[mid % titles.length][1]}
+                      </p>
+                    </button>
+                  </div>
+                </motion.li>
+              ))}
+            </AnimatePresence>
           </ul>
         </div>
         <div className="flex-1 overflow-y-scroll border-l px-8 py-8">
